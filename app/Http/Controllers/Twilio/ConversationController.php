@@ -68,6 +68,11 @@ class ConversationController extends Controller
         ]);
     }
 
+    public function conversationUsers(Request $request) {
+        $conversation = Conversation::where('sid', $request->sid)->first();
+        return response()->json($conversation->participants()->get()->toArray());
+    }
+
     public function deleteConversation() {
         $this->client->conversations->v1->conversations('CHdd8058439f7f44489cfa5094b380e6a5')->delete();
     }

@@ -82,12 +82,21 @@ export default {
         },
         messages() {
             return this.$store.getters.convoMsg;
+        },
+        otherParticipant() {
+            const target = this.$store.getters.allConvoUsers
+            target.array.forEach(item => {
+                if(item.sid !== this.me.sid) {
+                    return item;
+                }
+            });
         }
     },
 
     created() {
         this.me = this.login().authUser;
         this.convoSid = this.$route.params.sid;
+        this.$store.dispatch('ConvoUsers', this.convoSid);
         this.$store.dispatch("allMsg", this.$route.params.sid);
     }
 };

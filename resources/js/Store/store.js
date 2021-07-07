@@ -3,11 +3,13 @@ import Router from '../Router'
 const state = {
     login : {},
     msg : {},
+    convoUsers : {},
 }
 
 const getters = {
     loginResponse : (state) => state.login,
     convoMsg : (state) => state.msg,
+    allConvoUsers : state => state.convoUsers
 }
 
 const actions = {
@@ -65,12 +67,22 @@ const actions = {
         .catch(error => {
             console.log(error)
         })     
+    },
+
+    ConvoUsers({commit}, request) {
+        axios.post('/api/conversations/users', {'sid' : request})
+        .then(response => {
+            if(response.status == 200) {
+                commit('mutateConvoUsers', response.data)
+            }
+        })
     }
 }
 
 const mutations = {
     mutataLogin : (state, payload) => state.login = payload,
-    mutateMsg : (state, payload) => state.msg = payload
+    mutateMsg : (state, payload) => state.msg = payload,
+    mutateConvoUsers : (state, payload) => state.convoUsers = payload,
 }
 
 export default {

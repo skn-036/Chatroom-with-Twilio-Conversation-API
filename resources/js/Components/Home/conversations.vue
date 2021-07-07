@@ -8,13 +8,9 @@
                     class="img-fluid round-full"
                 />
             </div>
-            <div class="col-10 my-auto border-bottom-light pb-3 cursor-pointer">
+            <div class="col-10 my-auto border-bottom-light pb-3 cursor-pointer" @click="convo(authUser, conversation)">
                 <div class="d-flex justify-content-between">
                     <h5 class="text-black">{{ conversation.participants[0].name }}</h5>
-                    <p class="text-size-small text-grey">12:45 AM</p>
-                </div>
-                <div class="">
-                    <p>Hi, How are you?</p>
                 </div>
             </div>
         </div>
@@ -35,8 +31,21 @@ export default {
     ],
 
     methods : {
-
+        convo(authUser, conver) {
+            const user = conver.participants[0];
+            const participants = {authUser, user};
+            axios.post('/api/conversations/create', participants)
+            .then(response => {
+                if(response.status == 200) {
+                    this.$router.push({ name : 'conversation.message.index', params : { sid : response.data.conversation[0].sid }})
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     },
+
 
     created() {
         axios.post('/api/conversations', this.authUser)

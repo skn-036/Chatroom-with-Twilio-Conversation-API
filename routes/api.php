@@ -39,6 +39,7 @@ Route::Get('/', function(){
     Route::post('conversations', [ConversationController::class, 'allConversations']);
     Route::post('conversations/create', [ConversationController::class, 'newConversation']);
     Route::post('conversations/delete', [ConversationController::class, 'deleteConversation']);
+    Route::post('conversations/users', [ConversationController::class, 'conversationUsers']);
 
     //message Resource
     Route::post('messages/create', [MessageController::class, 'newMessage']);

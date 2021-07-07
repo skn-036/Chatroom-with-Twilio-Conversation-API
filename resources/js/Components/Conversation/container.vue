@@ -8,7 +8,6 @@
 <script>
 import topHeader from './header'
 import msgBody from './msgBody'
-//import sendMsg from './sendMsg'
 
 export default {
     components : {

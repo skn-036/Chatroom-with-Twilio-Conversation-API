@@ -1946,7 +1946,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var state = {
   login: {},
-  msg: {}
+  msg: {},
+  convoUsers: {}
 };
 var getters = {
   loginResponse: function loginResponse(state) {
@@ -1954,6 +1955,9 @@ var getters = {
   },
   convoMsg: function convoMsg(state) {
     return state.msg;
+  },
+  allConvoUsers: function allConvoUsers(state) {
+    return state.convoUsers;
   }
 };
 var actions = {
@@ -2010,6 +2014,16 @@ var actions = {
     })["catch"](function (error) {
       console.log(error);
     });
+  },
+  ConvoUsers: function ConvoUsers(_ref5, request) {
+    var commit = _ref5.commit;
+    axios.post('/api/conversations/users', {
+      'sid': request
+    }).then(function (response) {
+      if (response.status == 200) {
+        commit('mutateConvoUsers', response.data);
+      }
+    });
   }
 };
 var mutations = {
@@ -2018,6 +2032,9 @@ var mutations = {
   },
   mutateMsg: function mutateMsg(state, payload) {
     return state.msg = payload;
+  },
+  mutateConvoUsers: function mutateConvoUsers(state, payload) {
+    return state.convoUsers = payload;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({

@@ -30,10 +30,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -42,12 +38,34 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: ['loginResponse'],
-  methods: {},
+  methods: {
+    convo: function convo(authUser, conver) {
+      var _this = this;
+
+      var user = conver.participants[0];
+      var participants = {
+        authUser: authUser,
+        user: user
+      };
+      axios.post('/api/conversations/create', participants).then(function (response) {
+        if (response.status == 200) {
+          _this.$router.push({
+            name: 'conversation.message.index',
+            params: {
+              sid: response.data.conversation[0].sid
+            }
+          });
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.post('/api/conversations', this.authUser).then(function (response) {
-      _this.conversations = response.data;
+      _this2.conversations = response.data;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -155,20 +173,19 @@ var render = function() {
           "div",
           {
             staticClass:
-              "col-10 my-auto border-bottom-light pb-3 cursor-pointer"
+              "col-10 my-auto border-bottom-light pb-3 cursor-pointer",
+            on: {
+              click: function($event) {
+                return _vm.convo(_vm.authUser, conversation)
+              }
+            }
           },
           [
             _c("div", { staticClass: "d-flex justify-content-between" }, [
               _c("h5", { staticClass: "text-black" }, [
                 _vm._v(_vm._s(conversation.participants[0].name))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-size-small text-grey" }, [
-                _vm._v("12:45 AM")
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1, true)
+            ])
           ]
         )
       ])
@@ -190,12 +207,6 @@ var staticRenderFns = [
         }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [_c("p", [_vm._v("Hi, How are you?")])])
   }
 ]
 render._withStripped = true
