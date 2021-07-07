@@ -1,0 +1,190 @@
+
+/***************** Custom Classes *********************/
+.bg-black {
+    background: $black;
+}
+.bg-blue {
+    background: $blue;
+}
+.bg-light {
+    background: #ababab;
+}
+.bg-light-orange {
+    background: #fce3ba;
+}
+.bg-orange {
+    background: $orange;
+}
+.bg-transparent {
+    background: transparent;
+}
+.bg-white {
+    background: $white;
+}
+.border-none {
+    border: none;
+}
+.border-orange {
+    border-color: $orange;
+}
+.border-simple {
+    border: 1px solid #bbb;
+}
+.border-middle {
+    border: 1px solid #888;
+}
+.border-bottom-light {
+    border-bottom: 1px solid #bbb;
+}
+.bottom-0 {
+    bottom: 0%;
+    left: 30%;
+    right: 0%
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.font-20 {
+    font-size: 20px;
+}
+.font-bold {
+    font-weight: 700;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.h-40 {
+    height: 40%;
+}
+.h-inherit {
+    height: inherit;
+}
+.h-max-content {
+    height: max-content;
+}
+.h-screen {
+    min-height: 100vh;
+    max-height: max-content;
+}
+.h-100vh {
+    height: 100vh;
+}
+.h-10 {
+    height: 10vh;
+}
+.h-80 {
+    height: 80vh;
+}
+.italic {
+    font-style: italic;
+}
+.max-h-screen {
+    max-height: 100vh;
+}
+.outline-none {
+    outline: none;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.p-abs {
+    position: absolute;
+}
+.p-rel {
+    position: relative;
+}
+.p-fix {
+    position: fixed;
+}
+.px-6 {
+    padding: 0 5rem;
+}
+.pr-12 {
+    padding-right: 10rem;
+}
+.pl-12 {
+    padding-left: 10rem;
+}
+.round-5 {
+    border-radius: 5px;
+}
+.round-10 {
+    border-radius: 10px;
+}
+.round-20 {
+    border-radius: 20px;
+}
+.round-50 {
+    border-radius: 50;
+}
+.round-full {
+    border-radius: 100%;
+}
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+}
+.text-active {
+    color: $orange;
+}
+.text-black {
+    color: #000;
+}
+.text-blue {
+    color: $blue;
+}
+.text-grey {
+    color: #555;
+}
+.text-orange {
+    color: $orange;
+}
+.text-red {
+    color: $red;
+}
+.text-white {
+    color: #fff;
+}
+.text-size-small {
+    font-size: 11px;
+}
+.text-size-smaller {
+    font-size: 8px;
+}
+.text-size-large {
+    font-size: 20px;
+}
+.underline {
+    text-decoration: underline;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.w-screen {
+    width: 100vw;
+}
+.w-20 {
+    width: 20%;
+}
+.w-40 {
+    width: 40%;
+}
+.w-60 {
+    width: 60%;
+}
+.w-80 {
+    width: 80%;
+}
+.z-999 {
+    z-index: 999;
+}
+
+
+
+
+
+
+/*************** !! Custom Classes ********************/
